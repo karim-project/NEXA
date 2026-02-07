@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using NEXA.Data;
+using NEXA.Models;
+using NEXA.Repositories.IRepository;
+using System.Numerics;
 
 namespace NEXA
 {
@@ -21,6 +24,20 @@ namespace NEXA
             {
                 options.UseSqlServer(connectionString);
             });
+
+
+
+            builder.Services.AddScoped<IRepository<Answer>, Repository<Answer>>();
+            builder.Services.AddScoped<IRepository<Certificate>, Repository<Certificate>>();
+            builder.Services.AddScoped<IRepository<Course>, Repository<Course>>();
+            builder.Services.AddScoped<IRepository<Enrollment>, Repository<Enrollment>>();
+            builder.Services.AddScoped<IRepository<Exam>, Repository<Exam>>();
+            builder.Services.AddScoped<IRepository<ExamResult>, Repository<ExamResult>>();
+            builder.Services.AddScoped<IRepository<Lesson>, Repository<Lesson>>();
+            builder.Services.AddScoped<IRepository<Module>, Repository<Module>>();
+            builder.Services.AddScoped<IRepository<Progress>, Repository<Progress>>();
+            builder.Services.AddScoped<IRepository<Question>, Repository<Question>>();
+            builder.Services.AddScoped<IRepository<Resource>, Repository<Resource>>();
 
 
             var app = builder.Build();
