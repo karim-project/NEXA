@@ -1,0 +1,101 @@
+﻿@using NEXA.ViewModels
+@model RegisterVM
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>NEXA - Sign Up</title>
+    <link rel="stylesheet" href="~/css/authontication.css" />
+    <link href="~/bootstrap/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="auth-container">
+
+        <!-- LEFT -->
+        <div class="auth-form">
+
+            <div class="logo">
+                <img src="~/img/logo2.png" alt="">
+            </div>
+
+            <h1>Sign up</h1>
+            <p class="subtitle">
+                already registered? <a href="/Identity/Account/Login">Sign in</a>
+            </p>
+
+            <form method="post" asp-action="Register">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                <div class="form-group">
+                    <label asp-for="FirstName">First name</label>
+                    <input asp-for="FirstName" type="text" required />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LastName">Last name</label>
+                    <input asp-for="LastName" type="text" required />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email">Email</label>
+                    <input asp-for="Email" type="email" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password">Password</label>
+                    <div class="password-wrapper">
+                        <input asp-for="Password" type="password" required />
+                        <span>👁</span>
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword">Confirm Password</label>
+                    <div class="password-wrapper">
+                        <input asp-for="ConfirmPassword" type="password" required />
+                        <span>👁</span>
+                    </div>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn-main">Sign up</button>
+
+            </form>
+
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="auth-visual">
+
+            <div class="visual-card">
+                <img src="~/img/main-section.png" />
+                <p>
+                    Empower your workforce with personalized training programs,
+                    track their progress in real-time, and make data-driven
+                    decisions for promotions and career development.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

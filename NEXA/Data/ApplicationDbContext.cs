@@ -21,6 +21,7 @@ namespace NEXA.Data
         public DbSet<Progress> Progresses { get; set; } = null!;
         public DbSet<Question> Questions { get; set; } = null!;
         public DbSet<Resource> Resources { get; set; } = null!;
+        public DbSet<applicationUserOTP> applicationUserOTPs { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
