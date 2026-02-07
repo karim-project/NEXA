@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NEXA.Data;
+using NEXA.Repositories.IRepository;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace NEXA.Repositories.IRepository
+namespace NEXA.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
@@ -32,7 +33,7 @@ namespace NEXA.Repositories.IRepository
 
         public async Task<IEnumerable<T?>> GetAsync(
             Expression<Func<T, bool>>? expression = null,
-            Expression<Func<T, Object>>[]? includes = null,
+            Expression<Func<T, object>>[]? includes = null,
             bool tracked = true,
             CancellationToken cancellationToken = default)
         {
@@ -58,7 +59,7 @@ namespace NEXA.Repositories.IRepository
         }
         public async Task<T?> GetOneAsync(
             Expression<Func<T, bool>>? expression = null,
-            Expression<Func<T, Object>>[]? includes = null,
+            Expression<Func<T, object>>[]? includes = null,
             bool tracked = true,
             CancellationToken cancellationToken = default)
         {
