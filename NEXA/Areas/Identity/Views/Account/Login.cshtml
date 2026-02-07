@@ -1,0 +1,95 @@
+﻿@model LoginVM
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>NEXA - Sign In</title>
+    <link rel="stylesheet" href="~/css/authontication.css" />
+    <link href="~/bootstrap/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="auth-container">
+
+        <!-- LEFT -->
+        <div class="auth-form">
+
+            <div class="logo">
+                <img src="~/img/logo2.png" alt="">
+            </div>
+
+            <h1>Sign in</h1>
+            <p class="subtitle">
+                Don't have an account? <a href="/Identity/Account/Register">Create now</a>
+            </p>
+
+            <!-- Start Form -->
+            <form method="post" asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Email">Email</label>
+                    <input type="text" id="Email" asp-for="Email" placeholder="example@gmail.com" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password">Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="Password" asp-for="Password" placeholder="******" required />
+                        <span>👁</span>
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="extra-row">
+                    <label class="remember-me"><input type="checkbox" asp-for="RememberMe" /> <span>Remember me</span></label>
+                    <a href="/Identity/Account/ForgetPassword">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn-main">Sign in</button>
+
+            </form>
+            <!-- End Form -->
+
+            <div class="social">
+                <button type="button">Continue with Google</button>
+                <button type="button">Continue with Facebook</button>
+            </div>
+
+            <p class="subtitle mt-3">
+                Don't have an confirm mail? <a href="/Identity/Account/ResendEmailConfirmation">Resend Email Confirmation</a>
+            </p>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="auth-visual">
+
+            <div class="visual-card">
+                <img src="~/img/main-section.png" />
+                <p>
+                    Empower your workforce with personalized training programs,
+                    track their progress in real-time, and make data-driven
+                    decisions for promotions and career development.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+

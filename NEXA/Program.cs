@@ -1,9 +1,15 @@
+//<<<<<<< Updated upstream
+//=======
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using NEXA.Data;
 using NEXA.Models;
 using NEXA.Repositories.IRepository;
 using System.Numerics;
+using NEXA.Utitlies;
 
+//>>>>>>> Stashed changes
 namespace NEXA
 {
     public class Program
@@ -15,6 +21,8 @@ namespace NEXA
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+//<<<<<<< Updated upstream
+//=======
             var connectionString =
      builder.Configuration.GetConnectionString("DefaultConnection")
          ?? throw new InvalidOperationException("Connection string"
@@ -24,6 +32,22 @@ namespace NEXA
             {
                 options.UseSqlServer(connectionString);
             });
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(option =>
+            {
+                option.User.RequireUniqueEmail = true;
+                option.Password.RequiredLength = 8;
+                option.Password.RequireNonAlphanumeric = false;
+                option.SignIn.RequireConfirmedEmail = true;
+            })
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
+
+            builder.Services.AddScoped<IRepository<applicationUserOTP>, Repository<applicationUserOTP>>();
+            builder.Services.AddTransient<IEmailSender, EmailSender>();
+
+
 
 
 
@@ -40,6 +64,7 @@ namespace NEXA
             builder.Services.AddScoped<IRepository<Resource>, Repository<Resource>>();
 
 
+//>>>>>>> Stashed changes
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -58,7 +83,7 @@ namespace NEXA
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{area=Employee}/{controller=Home}/{action=Index}/{id?}")
                 .WithStaticAssets();
 
             app.Run();
