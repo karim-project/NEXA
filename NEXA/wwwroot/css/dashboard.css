@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: #0F172A;
+  --second-color: #1E293B;
+  --third-color: #3B82F6;
+  --number-color: hsla(217, 91%, 60%, 0.389);
+  --back-icon-color: #283C58;
+  --paragraph-color: #CBD5E1;
+  --green-color: #10B981;
+  --cairo-font-family: "Cairo", sans-serif;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  background-color: var(--main-color) !important;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ******************* */
+/* sidebar */
+/* ******************* */
+
+.sidebar {
+  width: 250px;
+
+  .logo {
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 10px 15px;
+      position: relative;
+      transition: 0.3s;
+      margin-top: 6px;
+
+      &:hover {
+        background-color: var(--second-color);
+        border-radius: 10px;
+        padding-left: 20px;
+      }
+
+      a {
+        color: white;
+      }
+    }
+
+    li.active {
+      background-color: var(--second-color);
+      border-radius: 10px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        width: 3px;
+        left: -10px;
+        top: 0;
+        height: 100%;
+        background-color: var(--third-color);
+      }
+    }
+  }
+}
+
+/* ******************* */
+/* content */
+/* ******************* */
+.content {
+  width: 100%;
+  position: relative;
+
+  /* ******************* */
+  /* header */
+  /* ******************* */
+  header {
+    border-bottom: 1px solid rgb(125 125 125);
+    padding: 30px 40px;
+    display: flex;
+    justify-content: right;
+    gap: 20px;
+
+    .user, .logout {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      i {
+        color: var(--third-color);
+      }
+
+      a {
+        color: white;
+      }
+    }
+
+    .logout img {
+      width: 20px;
+    }
+  }
+
+
+  /* ******************* */
+  /* main title */
+  /* ******************* */
+  h1 {
+    position: relative;
+    color: white;
+    margin: 40px 20px 40px;
+    display: inline-block;
+    font-size: 3rem;
+
+    &::before {
+      content: "";
+      bottom: -10px;
+      height: 3px;
+      position: absolute;
+      width: 70%;
+      background-color: white;
+      left: 0;
+    }
+
+    &::after {
+      content: "";
+      bottom: -10px;
+      height: 3px;
+      position: absolute;
+      width: 30%;
+      background-color: var(--third-color);
+      left: 0;
+    }
+  }
+
+  /* ******************* */
+  /* create button */
+  /* ******************* */
+  a.create {
+    position: absolute;
+    top: 9rem;
+    right: 5rem;
+    background-color: var(--third-color);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 10px;
+  }
+
+  /* ******************* */
+  /* table */
+  /* ******************* */
+  #table {
+    margin: 20px;
+  }
+
+  table {
+    border: none;
+    margin-top: 5rem;
+    /* margin: 20px; */
+
+    th {
+      background-color: var(--main-color) !important;
+      color: white;
+      border: none !important;
+      border-style: none;
+      padding: 20px;
+    }
+
+    td {
+      background-color: var(--second-color) !important;
+      color: white;
+      border: none !important;
+      border-style: none;
+      padding: 20px;
+    }
+  }
+
+
+}
